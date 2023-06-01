@@ -11,6 +11,10 @@ export default {
       robotomono: ["'Roboto Mono'", "monospace"],
       ubuntu: ["Ubuntu", "sans-serif"],
     },
-    plugins: [],
+    plugins: [import("@tailwindcss/forms")],
   },
+  plugins: [
+    import("@tailwindcss/forms"),
+    // ...
+  ],
 };

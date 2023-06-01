@@ -6,6 +6,7 @@ const items = [
   { to: "/produtos", name: "Produtos" },
   { to: "/sobre", name: "Sobre" },
   { to: "/login", name: "Login" },
+  { to: "/dashboard", name: "Dashboard" },
 ];
 
 const Header = () => {

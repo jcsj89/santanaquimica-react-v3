@@ -1,20 +1,39 @@
 import { useEffect, useState } from "react";
 import { URL } from "../config/api";
 
+// interface Props {
+//   url: string;
+//   method: "GET" | "HEAD" | "POST" | "DELETE" | "PUT" | "PATCH";
+//   start: boolean;
+// }
+
 export const useData = (url: string) => {
   const [state, setState] = useState<any[]>([]);
-  const [isLoading, setisLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const dataFetch = async () => {
-        setisLoading(true);
-      const data = await (await fetch(URL + url)).json();
-      setState(data);
+      setLoading(true);
+
+      let data: any; // alterar
+
+      try {
+        data = await fetch(URL + url);
+      } catch (error) {
+        console.log(error);
+      }
+
+      const resp = await data.json();
+
+      setTimeout(() => {
+        setState(resp);
+      }, 700);
     };
 
     dataFetch();
-    setisLoading(false);
+
+    setLoading(false);
   }, [url]);
 
-  return { data: state, isLoading };
+  return { data: state, loading };
 };
