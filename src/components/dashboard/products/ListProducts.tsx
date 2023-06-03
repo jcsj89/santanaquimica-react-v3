@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import { ProductCard } from "../../components/product/ProductCard";
-import { Spinner } from "../../components/ui/Spinner";
-// import { useGet } from "../../hooks/useFetch";
-import { useHttp } from "../../hooks/useHttp";
+import { useHttp } from "../../../hooks/useHttp";
+import { Spinner } from "../../ui/Spinner";
 
 type Product = {
   id: string;
@@ -11,7 +9,7 @@ type Product = {
   showInWeb: boolean;
 };
 
-const Products = () => {
+const ListProducts = () => {
   // const produtos = useData("/products");
   const [produtos, setProdutos] = useState<Product[]>([]);
 
@@ -33,21 +31,38 @@ const Products = () => {
 
   const renderProducts = () => {
     if (produtos.length > 0 && !loading) {
-      return produtos.map((item) => {
-        return (
-          <ProductCard
-            description={item.description}
-            detailedProductDescription={item.detailedProductDescription}
-          />
-        );
-      });
-    } else {
       return (
-        <ProductCard
-          description="produto number 1"
-          detailedProductDescription="Descricao do produto teste"
-        />
+        <table className="table-auto border-collapse border border-slate-500">
+          <thead>
+            <tr>
+              <th className="border border-slate-500 px-2">Descricao</th>
+              <th className="border border-slate-500 px-2">Preco</th>
+              <th className="border border-slate-500 px-2">Ativo</th>
+              <th className="border border-slate-500 px-2">Editar</th>
+              <th className="border border-slate-500 px-2">Excluir</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+              <td>Malcolm Lockyer</td>
+              <td>1961</td>
+            </tr>
+            <tr>
+              <td>Witchy Woman</td>
+              <td>The Eagles</td>
+              <td>1972</td>
+            </tr>
+            <tr>
+              <td>Shining Star</td>
+              <td>Earth, Wind, and Fire</td>
+              <td>1975</td>
+            </tr>
+          </tbody>
+        </table>
       );
+    } else {
+      return <div>nao certo</div>;
     }
   };
 
@@ -74,7 +89,7 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default ListProducts;
 
 // const useCadastrar = (e: any) => {
 //   e.preventDefault();

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { InputForm } from "../../../components/ui/InputForm";
+import { Spinner } from "../../../components/ui/Spinner";
 import { useHttp } from "../../../hooks/useHttp";
 // import { usePost } from "../../../hooks/useFetch";
 //   codeProd: string; // unique
@@ -40,7 +41,8 @@ import { useHttp } from "../../../hooks/useHttp";
 //   photos?: string[]; // tabela 1:N
 
 export const RegisterProduct = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  // Fetch data
+  const { sendHttpRequest, loading, statusCode, error, statusText } = useHttp();
   // states
   const [description, setDescription] = useState("");
   const [codeProd, setCodeProd] = useState("");
@@ -50,20 +52,16 @@ export const RegisterProduct = () => {
   const [detailedProductDescription, setdetailedProductDescription] =
     useState("");
   //
-  const fetchHttp = useHttp();
+  const [response, setResponse] = useState<any>();
 
   function onCreate(data: any) {
-    console.log('on create log;;;;;');
-    console.log(" ");
-    console.log(data);
+    setResponse(data);
   }
 
   const handleClick = async (e: any) => {
     e.preventDefault();
 
-    setIsLoading(true);
-
-    const body = {
+    const bodyData = {
       description,
       codeProd,
       color,
@@ -71,83 +69,92 @@ export const RegisterProduct = () => {
       detailedProductDescription,
     };
 
-    fetchHttp.sendHttpRequest({
+    const data = sendHttpRequest({
       url: "/products",
       method: "POST",
-      body,
+      bodyData,
       action: onCreate,
     });
+
+    // console.log(data);
   };
 
   return (
-    <form action="POST">
-      <div className="flex flex-col flex-wrap border  m-5 p-5">
-        <div className="flex m-1">
-          <label htmlFor="codeProd" className="text-sm">
-            Codigo:
-          </label>
-          <InputForm
-            type="text"
-            name="codeProd"
-            value={codeProd}
-            onChange={(e) => setCodeProd(e.target.value)}
-          />
+    <>
+      {!loading ? console.log(response) : null}
+      <form action="POST">
+        <div className="flex flex-col flex-wrap border  m-5 p-5">
+          <div className="flex m-1">
+            <label htmlFor="codeProd" className="text-sm">
+              Codigo:
+            </label>
+            <InputForm
+              type="text"
+              name="codeProd"
+              value={codeProd}
+              onChange={(e) => setCodeProd(e.target.value)}
+            />
 
-          <label htmlFor="description" className="text-sm">
-            Descricao:
-          </label>
-          <InputForm
-            type="text"
-            name="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
+            <label htmlFor="description" className="text-sm">
+              Descricao:
+            </label>
+            <InputForm
+              type="text"
+              name="description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
 
-          <label htmlFor="description" className="text-sm">
-            Cor:
-          </label>
-          <InputForm
-            type="text"
-            name="color"
-            value={color}
-            onChange={(e) => setColor(e.target.value)}
-          />
+            <label htmlFor="description" className="text-sm">
+              Cor:
+            </label>
+            <InputForm
+              type="text"
+              name="color"
+              value={color}
+              onChange={(e) => setColor(e.target.value)}
+            />
+          </div>
+
+          <div className="flex m-1">
+            <label htmlFor="description" className="text-sm">
+              Marca:
+            </label>
+            <InputForm
+              type="text"
+              name="brand"
+              value={brand}
+              onChange={(e) => setBrand(e.target.value)}
+            />
+            <label htmlFor="description" className="text-sm">
+              Fabricante:
+            </label>
+            <InputForm
+              type="text"
+              name="producer"
+              value={producer}
+              onChange={(e) => setProducer(e.target.value)}
+            />
+          </div>
+
+          <div className="flex m-1">
+            <label htmlFor="description" className="text-sm">
+              Descricao detalhada:
+            </label>
+            <textarea
+              name="detailedProductDescription"
+              className="enabled:hover:border-gray-400 disabled:opacity-75 border"
+              value={detailedProductDescription}
+              onChange={(e) => setdetailedProductDescription(e.target.value)}
+            />
+          </div>
         </div>
-
-        <div className="flex m-1">
-          <label htmlFor="description" className="text-sm">
-            Marca:
-          </label>
-          <InputForm
-            type="text"
-            name="brand"
-            value={brand}
-            onChange={(e) => setBrand(e.target.value)}
-          />
-          <label htmlFor="description" className="text-sm">
-            Fabricante:
-          </label>
-          <InputForm
-            type="text"
-            name="producer"
-            value={producer}
-            onChange={(e) => setProducer(e.target.value)}
-          />
-        </div>
-
-        <div className="flex m-1">
-          <label htmlFor="description" className="text-sm">
-            Descricao detalhada:
-          </label>
-          <textarea
-            name="detailedProductDescription"
-            className="enabled:hover:border-gray-400 disabled:opacity-75 border"
-            value={detailedProductDescription}
-            onChange={(e) => setdetailedProductDescription(e.target.value)}
-          />
-        </div>
-      </div>
-      <button onClick={handleClick}>Cadastrar</button>
-    </form>
+        {loading ? (
+          <Spinner />
+        ) : (
+          <button onClick={handleClick}>Cadastrar</button>
+        )}
+      </form>
+    </>
   );
 };

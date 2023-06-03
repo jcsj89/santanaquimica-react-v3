@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-const number = () => Math.floor(Math.random() * 100);
+const number = () => Math.floor(Math.random() * 9999);
 
 const NavBar = (props: { items: { to: string; name: string }[] }) => {
   return (
@@ -9,8 +9,7 @@ const NavBar = (props: { items: { to: string; name: string }[] }) => {
         {props.items.map((item) => (
           <li key={item.name + number()}>
             <NavLink className="hover:text-stone-700" to={item.to}>
-              {" "}
-              {item.name}{" "}
+              {item.name}
             </NavLink>
           </li>
         ))}
@@ -20,11 +19,3 @@ const NavBar = (props: { items: { to: string; name: string }[] }) => {
 };
 
 export default NavBar;
-
-{
-  /* <li key={number()} className="m-2 sm:m-3">
-  <NavLink key={number()} to={item.to} className="font-roboto">
-    {item.name}
-  </NavLink>
-</li>; */
-}
