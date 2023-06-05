@@ -1,4 +1,4 @@
-import logo from "../../assets/logo.png";
+import logo from "../../_assets/logo.png";
 import NavBar from "../../components/ui/NavBar";
 
 const items = [
@@ -11,17 +11,20 @@ const items = [
 
 const Header = () => {
   return (
-    <>
-      <div className="border-b p-4 flex  items-center justify-center sm:justify-between lg:justify-evenly  gap-5 flex-wrap">
-        <div className="">
+    <div className="w-full justify-center border-b mx-auto">
+      <div
+        className="max-w-screen-lg flex items-center sm:justify-between justify-center
+         flex-wrap mx-auto py-2"
+      >
+        <div className="my-1 ">
           <img src={logo} alt="santana" />
         </div>
 
-        <NavBar items={items} />
-
-
+        <div className="sm:my-1 ">
+          <NavBar items={items} />
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

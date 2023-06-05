@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { ProductCard } from "../../components/product/ProductCard";
-import { Spinner } from "../../components/ui/Spinner";
+
 // import { useGet } from "../../hooks/useFetch";
 import { useHttp } from "../../hooks/useHttp";
+import { ProductCard } from "./components/ProductCard";
+import { Spinner } from "../../components/ui/Spinner";
 
 type Product = {
   id: string;
@@ -60,7 +61,7 @@ const Products = () => {
   }
 
   return (
-    <>
+    <div className="container max-w-screen-lg mx-auto h-full p-2 border">
       <div className="flex flex-wrap gap-3 justify-center">
         {error ? (
           <div className="flex mx-auto justify-center items-center align-middle min-h-[200px] my-10">
@@ -70,7 +71,7 @@ const Products = () => {
           renderProducts()
         )}
       </div>
-    </>
+    </div>
   );
 };
 

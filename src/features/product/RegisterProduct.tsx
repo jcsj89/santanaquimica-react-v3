@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { InputForm } from "../../../components/ui/InputForm";
-import { Spinner } from "../../../components/ui/Spinner";
-import { useHttp } from "../../../hooks/useHttp";
+import { InputForm } from "../../components/ui/InputForm";
+import { Spinner } from "../../components/ui/Spinner";
+import { useHttp } from "../../hooks/useHttp";
+import ContentTitle from "../dashboard/components/ContentTitle";
 // import { usePost } from "../../../hooks/useFetch";
 //   codeProd: string; // unique
 //   description: string;
@@ -81,6 +82,7 @@ export const RegisterProduct = () => {
 
   return (
     <>
+      <ContentTitle title="Novo Registro de Produto" />
       {!loading ? console.log(response) : null}
       <form action="POST">
         <div className="flex flex-col flex-wrap border  m-5 p-5">

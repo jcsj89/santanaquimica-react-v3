@@ -1,4 +1,4 @@
-import foto from "../../assets/at.ls.300.png";
+import foto from "../../../_assets/at.ls.300.png";
 import { DescriptionDetails } from "./DescriptionDetails";
 
 interface IProduct {

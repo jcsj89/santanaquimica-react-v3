@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { URL } from "../config/api";
+import { URL } from "../_config/api";
 
 interface BaseProps {
   url: string;
@@ -71,10 +71,9 @@ export function useFetch({ url, start, method, bodyData }: Props): FetchReturn {
       setLoading(false);
     };
     if (start) fetchData();
-    console.log('loading in useFetch :'+loading)
+    console.log("loading in useFetch :" + loading);
     console.log("statuscode in useFetch :" + statusCode);
     console.log("data in useFetch :" + data);
-
   }, [url]);
 
   () => {

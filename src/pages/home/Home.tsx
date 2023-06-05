@@ -1,6 +1,6 @@
 const Home = () => {
   return (
-    <div className="container mx-auto border border-blue-500 h-24 ">
+    <div className="container max-w-screen-lg mx-auto h-full p-2 border">
       <h1>home</h1>
     </div>
   );

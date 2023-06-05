@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { URL } from "../config/api";
+import { URL } from "../_config/api";
 
 type FetchReturn = {
   data: Array<any> | undefined;
