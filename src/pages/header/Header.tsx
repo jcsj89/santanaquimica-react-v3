@@ -1,5 +1,5 @@
 import logo from "../../_assets/logo.png";
-import NavBar from "../../components/ui/NavBar";
+import NavBar from "../../components/site/NavBar";
 
 const items = [
   { to: "/", name: "Home" },
