@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
 // import { useGet } from "../../hooks/useFetch";
+import { Spinner } from "../../components/ui/Spinner";
 import { useHttp } from "../../hooks/useHttp";
 import { ProductCard } from "./components/ProductCard";
-import { Spinner } from "../../components/ui/Spinner";
 
 type Product = {
   id: string;
@@ -16,7 +16,7 @@ const Products = () => {
   // const produtos = useData("/products");
   const [produtos, setProdutos] = useState<Product[]>([]);
 
-  const { sendHttpRequest, loading, statusCode, error, statusText } = useHttp();
+  const { sendHttpRequest, loading, error } = useHttp();
 
   // const produtos = useGet({ url: "/products", start: true });
 

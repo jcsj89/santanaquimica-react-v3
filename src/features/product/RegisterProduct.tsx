@@ -43,7 +43,7 @@ import ContentTitle from "../dashboard/components/ContentTitle";
 
 export const RegisterProduct = () => {
   // Fetch data
-  const { sendHttpRequest, loading, statusCode, error, statusText } = useHttp();
+  const { sendHttpRequest, loading } = useHttp();
   // states
   const [description, setDescription] = useState("");
   const [codeProd, setCodeProd] = useState("");
@@ -77,7 +77,7 @@ export const RegisterProduct = () => {
       action: onCreate,
     });
 
-    // console.log(data);
+    console.log(data);
   };
 
   return (

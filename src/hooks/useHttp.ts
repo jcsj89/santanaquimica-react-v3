@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { URL } from "../_config/api";
 
-type FetchReturn = {
-  data: Array<any> | undefined;
-  loading: boolean;
-  statusCode: number;
-};
+// type FetchReturn = {
+//   data: Array<any> | undefined;
+//   loading: boolean;
+//   statusCode: number;
+// };
 
 interface BaseProps {
   url: string;
@@ -26,12 +26,12 @@ type ConditionalProps = GetProps | PostProps;
 
 type Props = BaseProps & ConditionalProps;
 
-interface IHttpRequest {
-  url: string;
-  method: "GET" | "HEAD" | "POST" | "DELETE" | "PUT" | "PATCH";
-  body?: any;
-  action: (data: any) => void;
-}
+// interface IHttpRequest {
+//   url: string;
+//   method: "GET" | "HEAD" | "POST" | "DELETE" | "PUT" | "PATCH";
+//   body?: any;
+//   action: (data: any) => void;
+// }
 
 export const useHttp = () => {
   const [loading, setLoading] = useState(false);

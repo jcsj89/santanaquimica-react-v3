@@ -16,7 +16,7 @@ type Product = {
 export const DashboardProducts = () => {
   const [produtos, setProdutos] = useState<Product[]>([]);
 
-  const { sendHttpRequest, loading, statusCode, error, statusText } = useHttp();
+  const { sendHttpRequest, loading } = useHttp();
 
   // const produtos = useGet({ url: "/products", start: true });
 

@@ -9,14 +9,14 @@ import {
 
 import { ItemSideBar } from "./ItemSideBar";
 
-const number = () => Math.floor(Math.random() * 9999);
+// const number = () => Math.floor(Math.random() * 9999);
 
-const items = [
-  { to: "/dashboard/produtos", name: "Produtos" },
-  { to: "/dashboard/produtos/registrar", name: "Registrar" },
-  { to: "/dashboard/usuarios", name: "Usuarios" },
-  { to: "/dashboard/estatisticas", name: "Estatisticas" },
-];
+// const items = [
+//   { to: "/dashboard/produtos", name: "Produtos" },
+//   { to: "/dashboard/produtos/registrar", name: "Registrar" },
+//   { to: "/dashboard/usuarios", name: "Usuarios" },
+//   { to: "/dashboard/estatisticas", name: "Estatisticas" },
+// ];
 // produtos
 // usuarios
 // roles
