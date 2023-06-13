@@ -7,24 +7,24 @@ const Home = () => {
       <div className="border-b">
         <h2>Como pensamos sobre nossos produtos</h2>
         <div className="my-2 flex flex-col flex-wrap sm:flex-nowrap sm:flex-row justify-between items-center">
-          <p className="flex-wrap">{textAboutProducts}</p>
           <img
             className="w-64 "
             src="../../public/img/alien_science.svg"
             alt=""
           />
+          <p className="flex-wrap">{textAboutProducts}</p>
         </div>
       </div>
 
       <div className="border-b">
         <h2>Como atuamos na entrega dos produtos</h2>
         <div className="my-2 flex flex-col flex-wrap sm:flex-nowrap sm:flex-row justify-between items-center">
+          <p>{textAboutDelivery}</p>
           <img
             className="w-80"
             src="../../public/img/delivery_truck.svg"
             alt=""
           />
-          <p>{textAboutDelivery}</p>
         </div>
       </div>
       <div className="my-3 flex flex-col flex-wrap sm:flex-nowrap justify-center items-center">
